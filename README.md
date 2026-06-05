@@ -22,8 +22,8 @@ Paciente inicial pensado pelo grupo: Idoso incapaz de se automedicar.
 
 
 
-
-
-
+<br>
+<br>
 mvn spring-boot:run
+<br>
 python -m robot cadastro.robot
