@@ -17,3 +17,13 @@ Tela 5: Aviso de quase esgotamento de medicamento (Em análise do grupo)
 
 
 Paciente inicial pensado pelo grupo: Idoso incapaz de se automedicar.
+
+
+
+
+
+
+
+
+mvn spring-boot:run
+python -m robot cadastro.robot
