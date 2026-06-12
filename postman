@@ -1,0 +1,38 @@
+POST http://localhost:8080/medicamentos
+
+Headers
+
+Key | Value -- | -- Content-Type | application/json
+Autenticação
+
+Não aplicável (ou definir Bearer Token se exigido pela API).
+
+Caso de Teste 01 — Sucesso
+
+Body (Request) { "nome": "Losartana", "dose": 50, "quantidadeEstoque": 30, "horario": "08:00" }
+
+Testes (Postman - Tests) pm.test("Status code deve ser 201", function () { pm.response.to.have.status(201); });
+
+pm.test("Mensagem de sucesso", function () { var json = pm.response.json();
+
+Caso de Teste 02 — Estoque inválido
+
+pm.expect(json.mensagem).to.eql("Registrado com sucesso"); });
+
+{ "nome": "Losartana", "dose": 50, "quantidadeEstoque": -5, "horario": "08:00" }
+
+Testes (Postman - Tests)
+
+pm.test("Status code deve ser 400", function () { pm.response.to.have.status(400); });
+
+pm.test("Mensagem de erro de estoque", function () { var json = pm.response.json(); pm.expect(json.mensagem).to.eql("Quantidade de estoque inválida"); });
+
+Caso de Teste 03 — Horário inválido
+
+{ "nome": "Losartana", "dose": 50, "quantidadeEstoque": 30, "horario": "25:99" }
+
+Testes (Postman - Tests)
+
+pm.test("Status code deve ser 400", function () { pm.response.to.have.status(400); });
+
+pm.test("Mensagem de erro de horário", function () { var json = pm.response.json(); pm.expect(json.mensagem).to.eql("Horário inválido"); });
